@@ -1,7 +1,7 @@
 <?php
 ob_start();
 define('API_KEY','token');
-$admin = "159887854";
+$admin = "216990494";
 function bot($method,$datas=[]){
     $url = "https://api.telegram.org/bot".API_KEY."/".$method;
     $ch = curl_init();
@@ -30,9 +30,7 @@ if (isset($update->edited_message)){
   $eid = $editm->message_id;
   $edname = $editm->from->first_name;
   $jsu = json_decode(file_get_contents(__DIR__.'/users/'.$eid.'.json'));
-  $text = "<b>".$edname."</b>\nمن دیدم که چی گفتی بازم ادیت کنی میفهمم
-  گفتی:
-".$jsu;
+  $text = "<b>/del</b>";
   $id = $update->edited_message->chat->id;
   bot('sendmessage',[
     'chat_id'=>$id,
@@ -45,7 +43,7 @@ if (isset($update->edited_message)){
   //$up = file_get_contents(__DIR__.'/users/'.$eid.'.json');
   //str_replace("edited_message","message",$up);
 }elseif(preg_match('/^\/([Ss]tart)/',$text1)){
-  $text = "به ربات ادیت نکن\nخوش آمدید\nبرای اد کردن من به گروه بر روی لینک زیر بزنید\nhttps://telegram.me/DontEdit_BOT?startgroup=new";
+  $text = "<i>welcome to lockedit robot</i>";
   bot('sendmessage',[
     'chat_id'=>$chat_id,
     'text'=>$text,
@@ -53,11 +51,8 @@ if (isset($update->edited_message)){
     'reply_markup'=>json_encode([
       'inline_keyboard'=>[
         [
-          ['text'=>'alireza_PT','url'=>'https://telegram.me/alireza_PT']
+          ['text'=>'AddGroup','url'=>'https://telegram.me/lockedite_rebot?startgroup=new']
         ],
-        [
-          ['text'=>'CreateBOT','url'=>'https://telegram.me/create_antispam_bot']
-        ]
       ]
     ])
   ]);
@@ -70,11 +65,6 @@ if (isset($update->edited_message)){
       'text'=>"کاربران : $mmemcount 👤 "
     ]);
 
-}elseif(isset($update->message-> new_chat_member )){
-bot('sendMessage',[
-      'chat_id'=>$chat_id,
-      'text'=>"به گروه خوش آمدید "
-    ]);
 }
   
   
