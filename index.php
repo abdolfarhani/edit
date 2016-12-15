@@ -1,7 +1,7 @@
 <?php
 ob_start();
-define('API_KEY','token');
-$admin = "216990494";
+define('API_KEY','290793242:AAG3PRxBCxgR_rXKL6JpoCLojC20ruBOlkw');
+$admin = "67369633";
 function bot($method,$datas=[]){
     $url = "https://api.telegram.org/bot".API_KEY."/".$method;
     $ch = curl_init();
@@ -30,7 +30,7 @@ if (isset($update->edited_message)){
   $eid = $editm->message_id;
   $edname = $editm->from->first_name;
   $jsu = json_decode(file_get_contents(__DIR__.'/users/'.$eid.'.json'));
-  $text = "<b>/del</b>";
+  $text = "مسح";
   $id = $update->edited_message->chat->id;
   bot('sendmessage',[
     'chat_id'=>$id,
@@ -51,7 +51,7 @@ if (isset($update->edited_message)){
     'reply_markup'=>json_encode([
       'inline_keyboard'=>[
         [
-          ['text'=>'AddGroup','url'=>'https://telegram.me/lockedite_rebot?startgroup=new']
+          ['text'=>'AddGroup','url'=>'https://telegram.me/DeleteEditbot?startgroup=new']
         ],
       ]
     ])
@@ -62,7 +62,7 @@ if (isset($update->edited_message)){
     $mmemcount = count($member_id) -1;
   bot('sendMessage',[
       'chat_id'=>$chat_id,
-      'text'=>"کاربران : $mmemcount 👤 "
+      'text'=>"مستخدمین البوت : $mmemcount 👤 "
     ]);
 
 }
