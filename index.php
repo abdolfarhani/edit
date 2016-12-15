@@ -1,6 +1,6 @@
 <?php
 ob_start();
-define('API_KEY','290793242:AAG3PRxBCxgR_rXKL6JpoCLojC20ruBOlkw');
+define('API_KEY','290793242:AAEPFn3HRljXu5KPsKoPGrce7Pfgml0vRUY');
 $admin = "67369633";
 function bot($method,$datas=[]){
     $url = "https://api.telegram.org/bot".API_KEY."/".$method;
@@ -30,7 +30,7 @@ if (isset($update->edited_message)){
   $eid = $editm->message_id;
   $edname = $editm->from->first_name;
   $jsu = json_decode(file_get_contents(__DIR__.'/users/'.$eid.'.json'));
-  $text = "مسح";
+  $text = "احذف";
   $id = $update->edited_message->chat->id;
   bot('sendmessage',[
     'chat_id'=>$id,
@@ -43,7 +43,8 @@ if (isset($update->edited_message)){
   //$up = file_get_contents(__DIR__.'/users/'.$eid.'.json');
   //str_replace("edited_message","message",$up);
 }elseif(preg_match('/^\/([Ss]tart)/',$text1)){
-  $text = "<i>welcome to lockedit robot</i>";
+  $text = "اهـلـا وسـهـلـا فـي بـوتـ حـذف الـتـعـديـلـ
+تابع لقناه @lTSHAKEl_CH";
   bot('sendmessage',[
     'chat_id'=>$chat_id,
     'text'=>$text,
@@ -51,7 +52,7 @@ if (isset($update->edited_message)){
     'reply_markup'=>json_encode([
       'inline_keyboard'=>[
         [
-          ['text'=>'AddGroup','url'=>'https://telegram.me/DeleteEditbot?startgroup=new']
+          ['text'=>'ضیفنی للکروب','url'=>'https://telegram.me/DeleteEditbot?startgroup=new']
         ],
       ]
     ])
